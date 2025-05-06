@@ -13,3 +13,4 @@ var window = new RubyDung(GameWindowSettings.Default, new NativeWindowSettings
 });
 
 window.Run();
+

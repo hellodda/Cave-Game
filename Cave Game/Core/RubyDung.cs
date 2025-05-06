@@ -84,7 +84,7 @@ namespace Cave_Game.Core
             base.OnRenderFrame(args);
 
             var mouse = MouseState;
-            player.Turn(mouse.X, mouse.Y);
+            player.Turn(mouse.Delta.X, mouse.Delta.Y);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.LoadIdentity();
