@@ -5,9 +5,9 @@ namespace Cave_Game.Core.level
 {
     public class Level
     {
-        public readonly int Width;
-        public readonly int Height;
-        public readonly int Depth;
+        public int Width { get; }
+        public int Height { get; }
+        public int Depth { get; }
 
         private readonly byte[] blocks;
         private readonly int[] lightDepths;

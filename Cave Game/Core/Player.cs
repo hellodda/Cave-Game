@@ -10,14 +10,21 @@ namespace Cave_Game.Core
     {
         private readonly Level level;
 
-        public double X, Y, Z;
-        public double PrevX, PrevY, PrevZ;
-        public double MotionX, MotionY, MotionZ;
-        public float XRotation, YRotation;
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public double PrevX { get; set; }
+        public double PrevY { get; set; }
+        public double PrevZ { get; set; }
+        public double MotionX { get; set; }
+        public double MotionY { get; set; } 
+        public double MotionZ { get; set; }
+        public float XRotation { get; set; }
+        public float YRotation { get; set; }
 
         private bool onGround;
 
-        public AxisAlignedBoundingBox BoundingBox;
+        public AxisAlignedBoundingBox BoundingBox { get; set; }
 
         public Player(Level level)
         {
@@ -114,6 +121,7 @@ namespace Cave_Game.Core
                 ResetPosition();
             }
         }
+
         public void Move(double x, double y, double z)
         {
             double prevX = x;

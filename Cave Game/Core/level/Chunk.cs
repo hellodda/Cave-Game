@@ -8,9 +8,9 @@ namespace Cave_Game.Core.level
         private static int texture = -1;
         private static readonly Tessellator tessellator = new();
 
-        public static int RebuiltThisFrame;
-        public static int Updates;
-        public AxisAlignedBoundingBox BoundingBox;
+        public static int RebuiltThisFrame { get; set; }
+        public static int Updates { get; set; }
+        public AxisAlignedBoundingBox BoundingBox { get; set; }
         
         private readonly Level level;
         private readonly int minX, minY, minZ;

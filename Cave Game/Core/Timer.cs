@@ -9,11 +9,11 @@ namespace Cave_Game.Core
         private const int MAX_TICKS_PER_UPDATE = 100;
         private readonly float ticksPerSecond;
         private long lastTime;
-        public float TimeScale = 1.0F;
-        public float Fps = 0.0F;
-        public float PassedTime = 0.0F;
-        public int Ticks;
-        public float PartialTicks;
+        public float TimeScale { get; set; } = 1.0F;
+        public float Fps { get; set; } = 0.0F;
+        public float PassedTime { get; set; } = 0.0F;
+        public int Ticks { get; set; } = default;
+        public float PartialTicks { get; set; } = default;
 
         public Timer(float ticksPerSecond)
         {

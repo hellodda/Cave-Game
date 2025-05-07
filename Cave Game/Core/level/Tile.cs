@@ -2,8 +2,8 @@
 {
     public class Tile
     {
-        public static Tile Grass = new Tile(0);
-        public static Tile Rock = new Tile(1);
+        public static Tile Grass { get; set; } = new Tile(0);
+        public static Tile Rock { get; set; } = new Tile(1);
 
         private readonly int textureId;
 

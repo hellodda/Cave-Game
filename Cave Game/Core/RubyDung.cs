@@ -10,9 +10,9 @@ namespace Cave_Game.Core
 {
     public class RubyDung : GameWindow
     {
-        private Level level;
-        private LevelRenderer levelRenderer;
-        private Player player;
+        private Level level = default!;
+        private LevelRenderer levelRenderer = default!;
+        private Player player = default!;
         private readonly float[] fogColor =
         {
             14 / 255f,
@@ -74,6 +74,7 @@ namespace Cave_Game.Core
 
             if (KeyboardState.IsKeyDown(Keys.Escape))
                 Close();
+
             player.Tick(KeyboardState);
         }
 
