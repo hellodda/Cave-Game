@@ -34,7 +34,6 @@ namespace Cave_Game.Core
 
         protected override void OnLoad()
         {
-            CheckGLError("OnLoad");
             base.OnLoad();
             GL.Enable(EnableCap.Texture2D);
             GL.ShadeModel(ShadingModel.Smooth);
@@ -59,6 +58,7 @@ namespace Cave_Game.Core
             player = new Player(level);
 
             CursorState = CursorState.Grabbed;
+            CheckGLError("OnLoad");
         }
 
         protected override void OnUnload()
@@ -70,7 +70,6 @@ namespace Cave_Game.Core
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
-            CheckGLError("OnUpdateFrame");
             base.OnUpdateFrame(args);
 
             if (KeyboardState.IsKeyDown(Keys.Escape))
@@ -80,8 +79,8 @@ namespace Cave_Game.Core
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
-            CheckGLError("OnRenderFrame");
             base.OnRenderFrame(args);
+
 
             var mouse = MouseState;
             player.Turn(mouse.Delta.X, mouse.Delta.Y);
@@ -96,20 +95,20 @@ namespace Cave_Game.Core
             GL.Fog(FogParameter.FogStart, -10f);
             GL.Fog(FogParameter.FogEnd, 20f);
             GL.Fog(FogParameter.FogColor, fogColor);
+
             GL.Disable(EnableCap.Fog);
-
             levelRenderer.Render(0);
-
             GL.Enable(EnableCap.Fog);
             levelRenderer.Render(1);
             GL.Disable(EnableCap.Texture2D);
 
             SwapBuffers();
+
+            CheckGLError("OnRenderFrame");
         }
 
         private void MoveCameraToPlayer(float partialTicks)
         {
-            CheckGLError("MoveCameraToPlayer");
             GL.Translate(0.0f, 0.0f, -0.3f);
             GL.Rotate(player.XRotation, 1.0f, 0.0f, 0.0f);
             GL.Rotate(player.YRotation, 0.0f, 1.0f, 0.0f);
@@ -117,7 +116,6 @@ namespace Cave_Game.Core
             double x = player.PrevX + (player.X - player.PrevX) * partialTicks;
             double y = player.PrevY + (player.Y - player.PrevY) * partialTicks;
             double z = player.PrevZ + (player.Z - player.PrevZ) * partialTicks;
-            Console.Write($"\rCamera position: x={x}, y={y}, z={z}");
             GL.Translate(-x, -y, -z);
         }
     }

@@ -1,6 +1,6 @@
-﻿using Cave_Game.Core.Extensions;
-using Cave_Game.Core.level;
+﻿using Cave_Game.Core.level;
 using Cave_Game.Core.physics;
+using OpenTK.Mathematics;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
 
@@ -43,7 +43,7 @@ namespace Cave_Game.Core
         {
             Random rd = new();
             float x = rd.Next(level.Width);    
-            float y = rd.Next(level.Depth);
+            float y = rd.Next(level.Depth + 100);
             float z = rd.Next(level.Height);   
             SetPosition(x, y, z);
         }
@@ -109,6 +109,10 @@ namespace Cave_Game.Core
                 MotionX *= 0.8F;
                 MotionZ *= 0.8F;
             }
+            if (Y < -100)
+            {
+                ResetPosition();
+            }
         }
         public void Move(double x, double y, double z)
         {
@@ -153,8 +157,8 @@ namespace Cave_Game.Core
             x *= distance;
             z *= distance;
 
-            double sin = Math.Sin(MathExtension.DegreesToRadians(YRotation));
-            double cos = Math.Cos(MathExtension.DegreesToRadians(YRotation));
+            double sin = Math.Sin(MathHelper.DegreesToRadians(YRotation));
+            double cos = Math.Cos(MathHelper.DegreesToRadians(YRotation));
 
             MotionX += x * cos - z * sin;
             MotionZ += z * cos + x * sin;
