@@ -18,8 +18,6 @@ namespace Cave_Game.Core
 
             using (var image = new Bitmap(filePath))
             {
-                image.RotateFlip(RotateFlipType.RotateNoneFlipY); 
-
                 var data = image.LockBits(
                     new Rectangle(0, 0, image.Width, image.Height),
                     ImageLockMode.ReadOnly,

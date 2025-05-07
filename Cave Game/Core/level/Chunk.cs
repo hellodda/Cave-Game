@@ -10,7 +10,7 @@ namespace Cave_Game.Core.level
 
         public static int RebuiltThisFrame { get; set; }
         public static int Updates { get; set; }
-        public AxisAlignedBoundingBox BoundingBox { get; set; }
+        public AxisAlignedBoundingBox BoundingBox {get; set; }
         
         private readonly Level level;
         private readonly int minX, minY, minZ;
@@ -56,7 +56,7 @@ namespace Cave_Game.Core.level
                     {
                         if (!level.IsTile(x, y, z)) continue;
 
-                        if (y > level.Depth - 7 && level.GetBrightness(x, y, z) == 1.0F)
+                        if (y + 45 > level.Depth - 7)
                             Tile.Grass.Render(tessellator, level, layer, x, y, z);
                         else
                             Tile.Rock.Render(tessellator, level, layer, x, y, z);

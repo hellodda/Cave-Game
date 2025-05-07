@@ -5,6 +5,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 using OpenTK.Graphics.OpenGL;
 using ErrorCode = OpenTK.Graphics.OpenGL.ErrorCode;
 using Cave_Game.Core.level;
+using NAudio.Wave;
 
 namespace Cave_Game.Core
 {
@@ -13,6 +14,8 @@ namespace Cave_Game.Core
         private Level level = default!;
         private LevelRenderer levelRenderer = default!;
         private Player player = default!;
+        private AudioFileReader audioFile = default!;
+        private WaveOutEvent outEvent = default!;
         private readonly float[] fogColor =
         {
             14 / 255f,
@@ -43,6 +46,19 @@ namespace Cave_Game.Core
             GL.Enable(EnableCap.CullFace);
             GL.DepthFunc(DepthFunction.Lequal);
 
+            try
+            {
+                audioFile = new AudioFileReader(AppContext.BaseDirectory + @"Core\SoundTracks\Key.mp3");
+                outEvent = new WaveOutEvent();
+
+                outEvent.Init(audioFile);
+                outEvent.Play();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error loading audio: {e.Message}");
+            }
+
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
             var proj = Matrix4.CreatePerspectiveFieldOfView(
@@ -63,6 +79,11 @@ namespace Cave_Game.Core
 
         protected override void OnUnload()
         {
+            if (outEvent is not null)
+            {
+                outEvent.Stop();
+                outEvent.Dispose();
+            }
             CheckGLError("OnUnload");
             level.Save();
             base.OnUnload();
