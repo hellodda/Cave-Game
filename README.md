@@ -1,1 +1,1 @@
-![Demo](Cave_Game/demo.gif)
+![Demo GIF](demo.gif)
