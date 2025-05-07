@@ -16,6 +16,7 @@
         public FloatBuffer(int capacity)
         {
             _buffer = new float[capacity];
+            Array.Clear(_buffer, 0, capacity); 
             _capacity = capacity;
             _limit = capacity;
             _position = 0;

@@ -77,7 +77,7 @@ namespace Cave_Game.Core.level
                 GL.ColorPointer(3, ColorPointerType.Float, 0, cols);
             }
 
-            GL.DrawArrays(PrimitiveType.Triangles, 0, vertexCount);
+            GL.DrawArrays(PrimitiveType.Quads, 0, vertexCount);
 
             GL.DisableClientState(ArrayCap.VertexArray);
             if (hasTexture) GL.DisableClientState(ArrayCap.TextureCoordArray);
