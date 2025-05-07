@@ -56,7 +56,7 @@ namespace Cave_Game.Core.level
                     {
                         if (!level.IsTile(x, y, z)) continue;
 
-                        if (y + 45 > level.Depth - 7)
+                        if (y + 50 > level.Depth - 7 && level.GetBrightness(x, y, z) == 1.0f)
                             Tile.Grass.Render(tessellator, level, layer, x, y, z);
                         else
                             Tile.Rock.Render(tessellator, level, layer, x, y, z);
