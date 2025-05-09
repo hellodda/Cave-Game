@@ -59,7 +59,7 @@ namespace Cave_Game.Core
         public void Turn(float x, float y)
         {
             YRotation += x * 0.15F;
-            XRotation -= y * 0.15F;
+            XRotation += y * 0.15F;
 
             XRotation = Math.Max(-90.0F, XRotation);
             XRotation = Math.Min(90.0F, XRotation);
